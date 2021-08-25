@@ -126,5 +126,16 @@ namespace DiscordBot.Modules
             embed.WithImageUrl(avatar.GetAvatarUrl());
             await ReplyAsync("", false, embed.Build());
         }
+        [Command("love")]
+        public async Task Love([Remainder]string user = null)
+        {
+            if(user == null)
+            {
+                await ReplyAsync("You are selfish");
+                return;
+            }
+            await ReplyAsync($"{Context.User.Mention} loves {user}");
+            await ReplyAsync("https://tenor.com/view/i-love-you-i-love-you-very-much-i-love-you-this-much-lick-hearts-gif-17307705");
+        }
     }
 }

@@ -61,6 +61,8 @@ namespace DiscordBot.TasksClient
                         if (myWarns == 3)
                         {
                             var role = guild.Roles.FirstOrDefault(x => x.Name == "Issue");
+                            warns.Remove(user.Id);
+                            warns.Add(user.Id, 0);
                             var user1 = user as SocketGuildUser;
                             await user1.AddRoleAsync(role);
                             await DmChannel.SendMessageAsync("You lost access to rooms for 24h");
